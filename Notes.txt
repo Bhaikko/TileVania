@@ -1,0 +1,5 @@
+// Lecture 181
+TilePallete is used for tilemapping
+
+Tilemap Pipeline
+SpriteSheet -> Sliced Sprite -> Tile Asset(Heirarchy) -> Tile Palette -> Tilemap(Scene)
