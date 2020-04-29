@@ -3,3 +3,7 @@ TilePallete is used for tilemapping
 
 Tilemap Pipeline
 SpriteSheet -> Sliced Sprite -> Tile Asset(Heirarchy) -> Tile Palette -> Tilemap(Scene)
+
+// Lecture 185
+To apply collision to Timemap, Use 
+Timemap Collider and Composite Collider
