@@ -7,3 +7,6 @@ SpriteSheet -> Sliced Sprite -> Tile Asset(Heirarchy) -> Tile Palette -> Tilemap
 // Lecture 185
 To apply collision to Timemap, Use 
 Timemap Collider and Composite Collider
+
+// Lecture 192
+Layers are useful if we have same functionality across multiple GameObjects
