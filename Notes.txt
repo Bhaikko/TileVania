@@ -10,3 +10,9 @@ Timemap Collider and Composite Collider
 
 // Lecture 192
 Layers are useful if we have same functionality across multiple GameObjects
+
+// Lecture 196
+Cinemachine Brain is assigned to Camera which uses Cinemachine Script
+
+State Riven Cinemachine camera is used to add Transitions to Childed Cameras
+Custom Transitions can be added
