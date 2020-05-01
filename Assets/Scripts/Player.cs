@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     BoxCollider2D myFeetCollider = null;
 
     float gravityScaleAtStart = 1.0f;
+    bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +31,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Run();
-        Jump();
-        Climb();
+        if (!isDead) { 
+            Run();
+            Jump();
+            Climb();
+        }
     }
 
     private void Jump()
@@ -75,5 +78,19 @@ public class Player : MonoBehaviour
 
         animator.SetBool("IsClimbing", Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon);
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isDead) {
+            return;
+        }
+
+        if (MyBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
+        {
+            animator.SetBool("IsDead", true);
+            myRigidbody.velocity = new Vector2(1.0f, 10.0f);
+            isDead = true;
+        }
     }
 }
