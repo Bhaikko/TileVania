@@ -16,3 +16,12 @@ Cinemachine Brain is assigned to Camera which uses Cinemachine Script
 
 State Riven Cinemachine camera is used to add Transitions to Childed Cameras
 Custom Transitions can be added
+
+// Lecture 206
+Game session is responsible for persistent data
+Lives and dying,
+Score,
+Level progress,
+Restarting Game
+
+THIS SHOULD BE SINGLETON

@@ -88,11 +88,8 @@ public class Player : MonoBehaviour
         }
 
 
-        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy"))) {
-            Die();
-        }
-
-        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Hazards"))) {
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards"))) {
+            FindObjectOfType<GameSession>().ProcessDeath();
             Die();
         }
     }
