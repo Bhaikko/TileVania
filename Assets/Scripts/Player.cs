@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     Rigidbody2D myRigidbody = null;
     Animator animator = null;
-    CapsuleCollider2D MyBodyCollider = null;
+    CapsuleCollider2D myBodyCollider = null;
     BoxCollider2D myFeetCollider = null;
 
     float gravityScaleAtStart = 1.0f;
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        MyBodyCollider = GetComponent<CapsuleCollider2D>();
+        myBodyCollider = GetComponent<CapsuleCollider2D>();
         myFeetCollider = GetComponent<BoxCollider2D>();
 
         gravityScaleAtStart = myRigidbody.gravityScale;
@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
             Run();
             Jump();
             Climb();
+            CheckDeath();
         }
     }
 
@@ -80,17 +81,26 @@ public class Player : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void CheckDeath()
     {
         if (isDead) {
             return;
         }
 
-        if (MyBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
-        {
-            animator.SetBool("IsDead", true);
-            myRigidbody.velocity = new Vector2(1.0f, 10.0f);
-            isDead = true;
+
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy"))) {
+            Die();
         }
+
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Hazards"))) {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        animator.SetBool("IsDead", true);
+        myRigidbody.velocity = new Vector2(1.0f, 10.0f);
+        isDead = true;
     }
 }
