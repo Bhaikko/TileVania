@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CoinPickup : MonoBehaviour
 {
+    [SerializeField] AudioClip pickupSound = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +21,6 @@ public class CoinPickup : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
+        AudioSource.PlayClipAtPoint(pickupSound, Camera.main.transform.position, 1.0f);
     }
 }
